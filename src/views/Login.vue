@@ -1,22 +1,22 @@
 <template>
   <div class="container">
-<div class="signIn">
-  <form @submit.prevent="login" class="form new-border">
-    <h2 class="form-heading">Login</h2>
-    <input
-      class="form-input new-border-inset"
-      type="username"
-      v-model="username"
-      placeholder="username"
-    />
-    <input
-      class="form-input new-border-inset"
-      type="password"
-      v-model="password"
-      placeholder="Password"
-    />
-    <button type="submit" class="form-btn neu-border">Sign in</button>
-    <!-- <div class="form-social-login">
+    <div class="signIn">
+      <form @submit.prevent="login" class="form new-border">
+        <h2 class="form-heading">Login</h2>
+        <input
+          class="form-input new-border-inset"
+          type="username"
+          v-model="username"
+          placeholder="username"
+        />
+        <input
+          class="form-input new-border-inset"
+          type="password"
+          v-model="password"
+          placeholder="Password"
+        />
+        <button type="submit" class="form-btn neu-border">Sign in</button>
+        <!-- <div class="form-social-login">
       <button class="form-btn neu-border form-social-btn">
         <i class="fab fa-google"></i>
       </button>
@@ -25,18 +25,20 @@
       </button>
     </div> -->
 
-    <p>
-      Not a member?
-      <router-link :to="{ name: 'Register' }">Create an account</router-link>
-    </p>
-  </form>
-</div>
- </div>
+        <p>
+          Not a member?
+          <router-link :to="{ name: 'Register' }"
+            >Create an account</router-link
+          >
+        </p>
+      </form>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
- data() {
+  data() {
     return {
       username: "",
       password: "",
@@ -44,7 +46,7 @@ export default {
   },
   methods: {
     login() {
-            console.log(this.username, this.password);
+      console.log(this.username, this.password);
 
       fetch("https://ecom-store-arden.herokuapp.com/auth/login", {
         method: "POST",
@@ -54,20 +56,19 @@ export default {
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
-          token: `Bearer ${localStorage.getItem("jwt")}`
+          token: `Bearer ${localStorage.getItem("jwt")}`,
         },
       })
         .then((response) => response.json())
         .then((json) => {
-          if(json.jwt){
+          if (json.jwt) {
             alert("User logged in");
-          localStorage.setItem("jwt", json.jwt);
-          this.$router.push({ name: "Home" });
-        } 
-        else{
-          alert("incorrect");
-        }
-       })
+            localStorage.setItem("jwt", json.jwt);
+            this.$router.push({ name: "Home" });
+          } else {
+            alert("incorrect");
+          }
+        })
         .catch((err) => {
           alert(err);
         });
@@ -135,5 +136,5 @@ padding: 100px;
 .form-social-btn {
   width: 45%;
   color: #333;
-  }
+}
 </style>
