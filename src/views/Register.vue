@@ -1,170 +1,128 @@
 <template>
- <div class="Register">
-<div class="Contact">
-    <div class="cont">
-      <h4 class="cont-msg">Contact</h4>
-      <h2 class="cont-head">I'd Love To Hear From You.</h2>
-      <h4 class="cont-msg">feel free to get in touch</h4>
-    </div>
-    <form class="form animated bounceInLeft">
-      <p class="p-tag" type="Name:">
-        <input placeholder="Write your name here.." />
-      </p>
-      <p class="p-tag" type="Last name:">
-        <input placeholder="Write your Last name here.." />
-      </p>
-      <p class="p-tag" type="Email:">
-        <input placeholder="All infomation will be sent to your email" />
-      </p>
-      <p class="p-tag" type="Password">
-        <input type="password" placeholder="Do not share your password with others.." />
-      </p>
-      <button>Register Now</button>
-    </form>
-  </div>
-</div>
+<form @submit.prevent="register" class="form neu-border">
+    <h2 class="form-heading">Register</h2>
+    <input
+      class="form-input neu-border-inset"
+      type="text"
+      v-model="username"
+      placeholder="Username"
+      required
+    />
+    <input
+      class="form-input neu-border-inset"
+      type="email"
+      v-model="email"
+      placeholder="Email"
+      required
+    />
+    <input
+      class="form-input neu-border-inset"
+      type="text"
+      v-model="contact"
+      placeholder="Contact Number"
+      required
+    />
+    <input
+      class="form-input neu-border-inset"
+      type="password"
+      v-model="password"
+      placeholder="Password"
+      required
+    />
+    <button type="submit" class="form-btn neu-border">Sign up</button>
+    
+    <p>
+      Already a member?
+              <a href="/Login" class="text-blue m-2"> Sign In</a>
+    </p>
+  </form>
 
 </template>
 
 <script>
 export default {
-
+ data() {
+    return {
+      username: "",
+      email: "",
+      contact: "",
+      password: "",
+    };
+  },
+  methods: {
+    register() {
+      console.log(this.username, this.email, this.contact, this.password);
+      fetch("https://ecom-store-arden.herokuapp.com/auth/register", {
+        method: "POST",
+        body: JSON.stringify({
+          username: this.username,
+          email: this.email,
+          contact: this.contact,
+          password: this.password,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          alert("User registered");
+          localStorage.setItem("jwt", json.jwt);
+          this.$router.push({ name: "Home" });
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    },
+  },
 }
 </script>
 
 <style scoped>
-.Register{
- line-height: 26px;
-  font-size: 18px;
-  font-family: "Roboto", sans-serif;
-  font-weight: normal;
-  background: black;
-  padding-bottom: 50px;
-}
-
-.cont {
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
-.cont-head {
-  font-size: 40px;
-  font-weight: bolder;
-  align-content: center;
-  color: rgba(255, 0, 0, 0.678);
-}
-.cont-msg {
-  font-size: 35px;
-  color: white;
-  margin: 10px 0 10px 0;
-  font-weight: bold;
-  align-content: center;
-}
-
-/* animation*/
-.animated {
-  animation-duration: 2s;
-  animation-fill-mode: both;
-}
-
-@keyframes bounceInLeft {
-  from,
-  60%,
-  75%,
-  90%,
-  to {
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
-
-  0% {
-    opacity: 0;
-    transform: translate3d(-3000px, 0, 0);
-  }
-
-  60% {
-    opacity: 1;
-    transform: translate3d(25px, 0, 0);
-  }
-
-  75% {
-    transform: translate3d(-10px, 0, 0);
-  }
-
-  90% {
-    transform: translate3d(5px, 0, 0);
-  }
-
-  to {
-    transform: none;
-  }
-}
-
-.bounceInLeft {
-  animation-name: bounceInLeft;
-}
-/* animation*/
-
-/* form style */
-.form {
-  background: rgba(128, 128, 128, 0.219);
-  color: white;
-  border-radius: 20px;
-  padding: 20px 30px;
-  box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-  position: relative;
-  margin-right: 200px;
-  margin-left: 200px;
-}
-
-input {
-  width: 95%;
-  padding: 10px;
-  box-sizing: border-box;
-  background: none;
-  outline: none;
-  resize: none;
-  border: 0;
-  transition: all 0.3s;
-  border-bottom: 2px solid #bebed2;
-  color: white;
-}
-input:focus {
-  border-bottom: 2px solid red;
-}
-.p-tag:before {
-  content: attr(type);
-  display: block;
-  margin: 28px 10px 10px;
-  font-size: 14px;
-  color: white;
-  text-align: left;
-}
-button {
-  /* float: right; */
-  padding: 8px 12px;
-  margin: 8px 0 0;
-  font-family: "Montserrat", sans-serif;
-  border: 2px solid #78788c;
+.neu-border {
   border-radius: 30px;
-  background: 0;
-  color: white;
+  background: #f5f5f5;
+  box-shadow: 8px 8px 15px #e4e4e4, -8px -8px 15px #ffffff;
+}
+.neu-border-inset {
+  border-radius: 30px;
+  background: #f5f5f5;
+  box-shadow: inset 8px 8px 15px #e4e4e4, inset -8px -8px 15px #ffffff;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
+}
+.form-heading {
+  text-align: center;
+  text-transform: uppercase;
+}
+.form-input,
+.form-btn {
+  border: none;
+  outline: none;
+  padding: 20px;
+}
+.form-btn {
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.1s linear;
 }
-button:hover {
-  background: #eaeaec;
-  color: rgba(224, 0, 0, 0.877);
+.form-btn:hover {
+  transform: scale(1.05);
+}
+.form-social-login {
+  display: flex;
+  justify-content: space-between;
+}
+.form-social-btn {
+  width: 45%;
+  color: rgb(255, 190, 190);
 }
 
-span {
-  margin: 15px 7px 0 30px;
-}
-/* form style */
-
-@media (max-width: 800px) {
-  .form {
-    margin-left: 30px;
-    margin-right: 30px;
-  }
-}
 </style>

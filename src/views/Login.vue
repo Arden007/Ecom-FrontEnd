@@ -1,58 +1,139 @@
 <template>
   <div class="container">
 <div class="signIn">
-   <form>
-  <!-- Email input -->
-  <div class="form-outline mb-4">
-    <input type="email" id="form2Example1" class="form-control" />
-    <label class="form-label" for="form2Example1">Email address</label>
-  </div>
+  <form @submit.prevent="login" class="form new-border">
+    <h2 class="form-heading">Login</h2>
+    <input
+      class="form-input new-border-inset"
+      type="username"
+      v-model="username"
+      placeholder="username"
+    />
+    <input
+      class="form-input new-border-inset"
+      type="password"
+      v-model="password"
+      placeholder="Password"
+    />
+    <button type="submit" class="form-btn neu-border">Sign in</button>
+    <!-- <div class="form-social-login">
+      <button class="form-btn neu-border form-social-btn">
+        <i class="fab fa-google"></i>
+      </button>
+      <button class="form-btn neu-border form-social-btn">
+        <i class="fab fa-facebook-f"></i>
+      </button>
+    </div> -->
 
-  <!-- Password input -->
-  <div class="form-outline mb-4">
-    <input type="password" id="form2Example2" class="form-control" />
-    <label class="form-label" for="form2Example2">Password</label>
-  </div>
-
-  <!-- 2 column grid layout for inline styling -->
-  <div class="row mb-4">
-    <div class="col d-flex justify-content-center">
-      <!-- Checkbox -->
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="form2Example34" checked />
-        <label class="form-check-label" for="form2Example34"> Remember me </label>
-      </div>
-    </div>
-
-    <div class="col">
-      <!-- Simple link -->
-      <a href="#!">Forgot password?</a>
-    </div>
-  </div>
-
-  <!-- Submit button -->
-  <button type="submit" class="btn-rounded btn-primary btn-block mb-4">Sign in</button>
-  <!-- Register buttons -->
-  <div class="text-center">
-    <p>Not a member? <a href="/Register">Register</a></p>
-  </div>
-</form>
+    <p>
+      Not a member?
+      <router-link :to="{ name: 'Register' }">Create an account</router-link>
+    </p>
+  </form>
 </div>
  </div>
 </template>
 
 <script>
 export default {
+ data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+    login() {
+            console.log(this.username, this.password);
 
-}
+      fetch("https://ecom-store-arden.herokuapp.com/auth/login", {
+        method: "POST",
+        body: JSON.stringify({
+          username: this.username,
+          password: this.password,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          token: `Bearer ${localStorage.getItem("jwt")}`
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          if(json.jwt){
+            alert("User logged in");
+          localStorage.setItem("jwt", json.jwt);
+          this.$router.push({ name: "Home" });
+        } 
+        else{
+          alert("incorrect");
+        }
+       })
+        .catch((err) => {
+          alert(err);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>
-.container{
+/* .container{
 padding: 100px;
 }
 .signIn{
     justify-content: center;
     align-items: center;
+} */
+.new-border {
+  border-radius: 30px;
+  background: #f5f5f5;
+  box-shadow: 8px 8px 15px #e4e4e4, -8px -8px 15px #ffffff;
 }
+.new-border-inset {
+  border-radius: 30px;
+  background: #e7e2e2;
+  box-shadow: inset 8px 8px 15px #e4e4e4, inset -8px -8px 15px #ffffff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  gap: 20px;
+  width: 100%;
+  margin-inline: auto;
+  max-width: 600px;
+}
+
+.form-heading {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.form-input,
+.form-btn {
+  border: none;
+  outline: none;
+  padding: 20px;
+}
+
+.form-btn {
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+.form-btn:hover {
+  transform: scale(1.05);
+}
+
+.form-social-login {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-social-btn {
+  width: 45%;
+  color: #333;
+  }
 </style>

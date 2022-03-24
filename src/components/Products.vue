@@ -1,137 +1,252 @@
 <template>
   <div></div>
-  <!-- <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-      <div class="card h-100">
-        <img
-          src="https://images.unsplash.com/photo-1628253747716-0c4f5c90fdda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODV8fG5pa2UlMjBzaG9lc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a longer card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit longer.
-          </p>
-          <a href="#!" class="btn btn-primary">Button</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img
-          src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHQlMjBzaGlydHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
-          class="card-img-top"
-          alt="Palm Springs Road"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a short card.</p>
-          <a href="#!" class="btn btn-primary">Button</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img
-          src="https://images.unsplash.com/photo-1547410701-73b5a0ada51d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8MTE2NDI3ODF8fGVufDB8fHx8&dpr=1&auto=format&fit=crop&w=294&q=60"
-          class="card-img-top"
-          alt="Los Angeles Skyscrapers"
-          width="400"
-          height="500"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a longer card with supporting text below as a natural
-            lead-in to additional content.
-          </p>
-          <a href="#!" class="btn btn-primary">Button</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img
-          src="https://media.istockphoto.com/photos/young-handsome-guy-in-a-warm-knitted-clothes-against-a-background-of-picture-id1300962117?b=1&k=20&m=1300962117&s=170667a&w=0&h=9bdeIa-c64jkAnTvmeFLXru3D4NVkQYd42ZioUphtQc="
-          class="card-img-top"
-          alt="Skyscrapers"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a longer card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit longer.
-          </p>
-          <a href="#!" class="btn btn-primary">Button</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img
-          src="https://images.unsplash.com/photo-1646855672493-b6925d356c9e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTg3fHxqYWNrZXR8ZW58MHx8Mnx8&auto=format&fit=crop&w=500&q=60"
-          class="card-img-top"
-          alt="Skyscrapers"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a longer card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit longer.
-          </p>
-          <a href="#!" class="btn btn-primary">Button</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img
-          src="https://images.unsplash.com/photo-1647370929006-17064fcdcad2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODR8fGRyZXNzfGVufDB8fDJ8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-          class="card-img-top"
-          alt="Skyscrapers"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a longer card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit longer.
-          </p>
-          <a href="#!" class="btn btn-primary">Button</a>
-        </div>
-      </div>
-    </div>
-  </div> -->
+
   <div id="products" class="container d-flex mb-3">
-  <div v-for="(product, i) in products" :key="i">
-    <div class="card">
-             <img :src="product.img" class="card-img-top" alt="{{product.title}}">
-             <div class="card-body">
-               <h5 class="card-title">{{product.title}}</h5>
-               <p class="card-text">R{{product.price}}</p>
-               <div class="d-flex mb-3">
-                 <input type="number" class="form-control" value=1 min=1 id="addToCart${position}">
-                 <button type="button" class="btn btn-dark ms-3" onclick="addToCart(${position})"><i class="fas fa-cart-plus"></i></button>
-               </div>
-              </div>
-               <div class="d-flex justify-content-end card-footer">
-                 <button type="button" class="btn btn-info w-50" data-bs-toggle="modal" data-bs-target="#editProduct${position}" >
-                   Edit
-                 </button>
-                 <button type="button" class="btn btn-warning w-50 ms-3" onclick="deleteProduct(${position})" >
-                   Delete
-                 </button>
-               </div>
+    <div v-for="(product, i) in products" :key="i">
+      <div class="card">
+        <img :src="product.img" class="card-img-top" alt="{{product.title}}" />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.title }}</h5>
+          <p class="card-text">R{{ product.price }}</p>
+          <div class="d-flex mb-3">
+            <input
+              type="number"
+              class="form-control"
+              value="1"
+              min="1"
+              id="addToCart${position}"
+            />
+            <button
+              v-if="!product.cart"
+              :disabled="product.cart"
+              type="button"
+              class="btn btn-dark ms-3"
+              @click="
+                (product.cart = true),
+                  addtocart(JSON.parse(JSON.stringify(product)))
+              "
+              href="#"
+            >
+              <i class="fas fa-cart-plus"></i>
+            </button>
+            <button
+              v-if="product.cart"
+              :disabled="product.cart"
+              type="button"
+              class="btn btn-dark ms-3"
+              href="#"
+            >
+              Added
+            </button>
           </div>
-  </div>
+        </div>
+        <div class="d-flex justify-content-center card-footer">
+          <button
+            type="button"
+            class="btn btn-info"
+            data-bs-toggle="modal"
+            data-bs-target="#editProduct"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger w-50 ms-3"
+            @click="deleteProduct(products, (index = true))"
+          >
+            Delete
+          </button>
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-secondary ms-3"
+            data-bs-toggle="modal"
+            data-bs-target="#addProductModal"
+          >
+            Add
+          </button>
+        </div>
+
+        <!-- Modal To Edit Product -->
+        <div
+          class="modal fade"
+          id="editProduct"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Edit {{ product.title }}
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="editTitle" class="form-label">Title</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="editTitle"
+                    id="editTitle"
+                    :value="product.title"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="editCategory" class="form-label">Category</label>
+                  <select
+                    class="form-select"
+                    name="editCategory"
+                    id="editCategory"
+                  >
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="editPrice" class="form-label">Price</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="editPrice"
+                    id="editPrice"
+                    :value="product.price"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="editImg" class="form-label">Image URL</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="editImg"
+                    id="editImg"
+                    :value="product.img"
+                  />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-dismiss="modal"
+                  @click="updateProduct(products, (index = true))"
+                >
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal To Edit Product-->
+
+        <!-- Modal To Add Product -->
+        <div
+          class="modal fade"
+          id="addProductModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add product</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="addTitle" class="form-label">Title</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="addTitle"
+                    id="addTitle"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Category</label>
+                  <select
+                    class="form-select"
+                    name="addCategory"
+                    id="addCategory"
+                  >
+                    <option value="Shoes">Shoes</option>
+                    <option value="Clothing">Clothing</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="addPrice" class="form-label">Price</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="addPrice"
+                    id="addPrice"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="addImg" class="form-label">Image URL</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="addImg"
+                    id="addImg"
+                  />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-info"
+                  data-bs-dismiss="modal"
+                  @click="createProduct(products, (index = true))"
+                >
+                  Create Product
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal -->
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  data: () => {
+  data() {
     return {
-      products: JSON.parse(localStorage.getItem("products"))
-        ? JSON.parse(localStorage.getItem("products"))
+      products: JSON.parse(localStorage.getItem("cart"))
+        ? JSON.parse(localStorage.getItem("cart"))
         : [
             {
               title: "Nike Blazer",
@@ -169,7 +284,59 @@ export default {
         : [],
     };
   },
-  
+  methods: {
+    deleteProduct(products, index) {
+      let confirmation = confirm(
+        "Are you sure you want to delete the selected product?"
+      );
+
+      if (confirmation) {
+        products.splice(products, index);
+        localStorage.setItem("products", JSON.stringify(products));
+      }
+    },
+    createProduct(products) {
+      let title = document.querySelector("#addTitle").value;
+      let category = document.querySelector("#addCategory").value;
+      let price = document.querySelector("#addPrice").value;
+      let img = document.querySelector("#addImg").value;
+
+      try {
+        if (!title || !price || !img)
+          throw new Error("Please fill in all fields");
+        products.push({
+          title,
+          category,
+          price,
+          img,
+        });
+        localStorage.setItem("products", JSON.stringify(products));
+      } catch (err) {
+        alert(err);
+      }
+    },
+    updateProduct(products, index) {
+      let title = document.querySelector("#editTitle").value;
+      let category = document.querySelector("#editCategory").value;
+      let price = document.querySelector("#editPrice").value;
+      let img = document.querySelector("#editImg").value;
+
+      try {
+        if (!title || !price || !img)
+          throw new Error("Please fill in all fields");
+        products[index] = {
+          title,
+          category,
+          price,
+          img,
+        };
+        localStorage.setItem("products", JSON.stringify(products));
+      } catch (err) {
+        alert(err);
+      }
+    },
+  },
+
   mounted() {
     console.log();
   },
@@ -178,21 +345,21 @@ export default {
 
 <style scoped>
 #products {
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  img {
-    height: 200px !important;
-    object-fit: cover;
-  }
-  
-  .card {
-    width: calc((100% / 4) - 15px);
-    min-width: 300px;
-  }
-  
-  .card-title {
-    text-transform: capitalize;
-  }
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+img {
+  height: 200px !important;
+  object-fit: cover;
+}
+
+.card {
+  width: calc((100% / 4) - 15px);
+  min-width: 300px;
+}
+
+.card-title {
+  text-transform: capitalize;
+}
 </style>

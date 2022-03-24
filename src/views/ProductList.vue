@@ -2,54 +2,21 @@
   <div>
     <Navbar/>
     <Anouncement/>
-    <!-- <h1 class="ProductTitle">Dresses</h1>
-    <div class="filterCon">
-      <div class="filter" id="filterText">
-        Filter Products:
-        <select name="" id="">
-          <option value="" disabled select>Color</option>
-          <option value="">White</option>
-          <option value="">Black</option>
-          <option value="">Red</option>
-          <option value="">Blue</option>
-          <option value="">Yellow</option>
-          <option value="">Green</option>
-        </select>
-        <select name="" id="">
-          <option value="" disabled select>Size</option>
-          <option value="">XS</option>
-          <option value="">S</option>
-          <option value="">M</option>
-          <option value="">L</option>
-          <option value="">XL</option>
-          <option value="">XXL</option>
-        </select>
-      </div>
-      <div class="filter" id="filterText">
-        Sort Products:
-        <select name="" id="">
-          <option value="" select>Newste</option>
-          <option value="">Price (asc)</option>
-          <option value="">Price (desc)</option>
-        </select>
-      </div>
-    </div> -->
-<!--  -->
-<!--  -->
+    
  <!--OOOOOOOOOO  -->
-        <li class="nav-item">
+        <!-- <li class="nav-item"> -->
               <!-- Button trigger modal -->
-              <button
+              <!-- <button
                 type="button"
                 class="btn btn-secondary"
                 data-bs-toggle="modal"
                 data-bs-target="#addProductModal"
               >
                 Add a product
-              </button>
+              </button> -->
 
               <!-- Modal -->
-              <div
+              <!-- <div
                 class="modal fade"
                 id="addProductModal"
                 tabindex="-1"
@@ -129,44 +96,9 @@
                   </div>
                 </div>
               </div>
-            </li>
+            </li> -->
          <!--  -->
 
-<div class="container d-flex justify-content-end mb-3 mt-5 pt-4">
-      <div class="d-flex w-15 m-4">
-        <label for="" class="form-label">Sort by category</label>
-        <select
-          class="form-select"
-          name=""
-          id="sortCategory"
-          onchange="sortCategory()"
-        >
-          <option value="All">All</option>
-          <option value="Shoes">Shoes</option>
-          <option value="Clothing">Clothing</option>n>
-        </select>
-      </div>
-      <div class="d-flex w-30 m-4">
-        <label for="" class="form-label">Sort by name</label>
-        <select class="form-select" name="" id="sortName" onchange="sortName()">
-          <option value="ascending">Ascending</option>
-          <option value="descending">Descending</option>
-        </select>
-      </div>
-      <div class="d-flex w-30 m-4">
-        <label for="" class="form-label">Sort by price</label>
-        <select
-          class="form-select"
-          name=""
-          id="sortPrice"
-          onchange="sortPrice()"
-        >
-          <option value="ascending">Ascending</option>
-          <option value="descending">Descending</option>
-        </select>
-      </div>
-    </div>
-    
 
 <!--  -->
 <!--  -->
