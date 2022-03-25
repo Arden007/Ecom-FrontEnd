@@ -46,10 +46,10 @@ export default {
   },
   methods: {
     login() {
-      console.log(this.username, this.password);
+      console.log(this.username);
 
       fetch("https://ecom-store-arden.herokuapp.com/auth/login", {
-        method: "POST",
+        method: "PATCH",
         body: JSON.stringify({
           username: this.username,
           password: this.password,

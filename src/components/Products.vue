@@ -245,9 +245,7 @@
 export default {
   data() {
     return {
-      products: JSON.parse(localStorage.getItem("cart"))
-        ? JSON.parse(localStorage.getItem("cart"))
-        : [
+      products: [
             {
               title: "Nike Blazer",
               category: "shoe",
@@ -277,7 +275,7 @@ export default {
               category: "shoe",
               price: "3499.95",
               img: "https://static.nike.com/a/images/c_limit,w_318,f_auto/t_product_v1/c0442a34-0b88-46db-b12c-8865b028dc1f/air-jordan-xxxvi-first-light-basketball-shoes-0CKrQR.png",
-            },
+            }
           ],
       cart: JSON.parse(localStorage.getItem("cart"))
         ? JSON.parse(localStorage.getItem("cart"))
