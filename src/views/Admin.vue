@@ -1,6 +1,6 @@
 <template>
   <table class="table align-middle mb-0 bg-white">
-    <div v-for="(product, i) in products" :key="i">
+    <div v-for="products in product" :key="products.id">
       <thead class="bg-light">
         <tr>
           <th>Image</th>
@@ -17,23 +17,23 @@
           <td>
             <div class="d-flex align-items-center">
               <img
-                :src="product.img"
-                alt="{{product.title}}"
+                :src="products.img"
+                alt="{{products.title}}"
                 class="img rounded-circle"
               />
             </div>
           </td>
           <td>
             <div class="ms-3">
-              <p class="fw-bold mb-1">{{ product.title }}</p>
+              <p class="fw-bold mb-1">{{ products.title }}</p>
             </div>
           </td>
           <td>
-            <p class="fw-normal mb-1">{{ product.category }}</p>
+            <p class="fw-normal mb-1">{{ products.categories }}</p>
           </td>
           <td>
             <span class="badge badge-success rounded-pill d-inline">{{
-              product.price
+              products.price
             }}</span>
           </td>
           <td>
@@ -50,7 +50,7 @@
             <button
               type="button"
               class="btn btn-danger ms-2"
-              @click="deleteProduct(products, (index = true))"
+              @click="deleteProduct(products, (products.id = true))"
             >
               Delete
             </button>
@@ -78,7 +78,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">
-                    Edit {{ product.title }}
+                    Edit {{ products.title }}
                   </h5>
                   <button
                     type="button"
@@ -95,7 +95,7 @@
                       type="text"
                       name="editTitle"
                       id="editTitle"
-                      :value="product.title"
+                      :value="products.title"
                     />
                   </div>
                   <div class="mb-3">
@@ -327,38 +327,40 @@
 export default {
   data() {
     return {
-      products: [
-        {
-          title: "Nike Blazer",
-          category: "shoe",
-          price: "1799.95",
-          img: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/8bd81405-bbe2-4516-aecb-665e22981785/blazer-low-77-jumbo-shoes-gRBtmC.png",
-        },
-        {
-          title: "Nike Metcon",
-          category: "shoe",
-          price: "2399.95",
-          img: "https://static.nike.com/a/images/c_limit,w_318,f_auto/t_product_v1/751775da-9cbe-4a20-bfaf-b400fec7c464/metcon-7-flyease-training-shoes-rvxbdG.png",
-        },
-        {
-          title: "Nike Air Zoom",
-          category: "shoe",
-          price: "2499.95",
-          img: "https://static.nike.com/a/images/c_limit,w_318,f_auto/t_product_v1/b72aa81e-f334-43d2-8e40-3ad10d382e7f/air-zoom-pegasus-38-road-running-shoes-S0nz9k.png",
-        },
-        {
-          title: "Nike Waffle",
-          category: "shoe",
-          price: "1899.95",
-          img: "https://static.nike.com/a/images/c_limit,w_318,f_auto/t_product_v1/321cee9a-d0ea-437a-a900-cc3b57a5541e/waffle-one-se-shoe-S8B0Hn.png",
-        },
-        {
-          title: "Air Jordan",
-          category: "shoe",
-          price: "3499.95",
-          img: "https://static.nike.com/a/images/c_limit,w_318,f_auto/t_product_v1/c0442a34-0b88-46db-b12c-8865b028dc1f/air-jordan-xxxvi-first-light-basketball-shoes-0CKrQR.png",
-        },
-      ],
+      product:null,
+
+      // producted: [
+      //   {
+      //     title: "Nike Blazer",
+      //     category: "shoe",
+      //     price: "1799.95",
+      //     img: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/8bd81405-bbe2-4516-aecb-665e22981785/blazer-low-77-jumbo-shoes-gRBtmC.png",
+      //   },
+      //   {
+      //     title: "Nike Metcon",
+      //     category: "shoe",
+      //     price: "2399.95",
+      //     img: "https://static.nike.com/a/images/c_limit,w_318,f_auto/t_product_v1/751775da-9cbe-4a20-bfaf-b400fec7c464/metcon-7-flyease-training-shoes-rvxbdG.png",
+      //   },
+      //   {
+      //     title: "Nike Air Zoom",
+      //     category: "shoe",
+      //     price: "2499.95",
+      //     img: "https://static.nike.com/a/images/c_limit,w_318,f_auto/t_product_v1/b72aa81e-f334-43d2-8e40-3ad10d382e7f/air-zoom-pegasus-38-road-running-shoes-S0nz9k.png",
+      //   },
+      //   {
+      //     title: "Nike Waffle",
+      //     category: "shoe",
+      //     price: "1899.95",
+      //     img: "https://static.nike.com/a/images/c_limit,w_318,f_auto/t_product_v1/321cee9a-d0ea-437a-a900-cc3b57a5541e/waffle-one-se-shoe-S8B0Hn.png",
+      //   },
+      //   {
+      //     title: "Air Jordan",
+      //     category: "shoe",
+      //     price: "3499.95",
+      //     img: "https://static.nike.com/a/images/c_limit,w_318,f_auto/t_product_v1/c0442a34-0b88-46db-b12c-8865b028dc1f/air-jordan-xxxvi-first-light-basketball-shoes-0CKrQR.png",
+      //   },
+      // ],
     };
   },
   methods: {
@@ -416,6 +418,19 @@ export default {
 
   components: {},
   created() {},
+   mounted() {
+    fetch("https://ecom-store-arden.herokuapp.com/product", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        this.product = json;
+      });
+      
+  },
 };
 </script>
 
