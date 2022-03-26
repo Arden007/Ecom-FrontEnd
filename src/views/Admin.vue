@@ -244,14 +244,13 @@
     </div>
   </table>
 
-  <table class="table align-middle mb-0 bg-white">
+  <table v-for="users in user" :key="users.id" class="table align-middle mb-0 bg-white">
     <thead class="bg-light">
       <tr>
-        <th>Name</th>
-        <th>Title</th>
-        <th>Status</th>
-        <th>Position</th>
-        <th>Actions</th>
+        <th> User Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Admin</th>
       </tr>
     </thead>
     <tbody>
@@ -265,8 +264,8 @@
               class="rounded-circle"
             />
             <div class="ms-3">
-              <p class="fw-bold mb-1">John Doe</p>
-              <p class="text-muted mb-0">john.doe@gmail.com</p>
+              <p class="fw-bold mb-1">{{users.username}}</p> 
+              <p class="text-muted mb-0">{{users.email}}</p>
             </div>
           </div>
         </td>
@@ -328,51 +327,17 @@ export default {
   data() {
     return {
       product:null,
-
-      // producted: [
-      //   {
-      //     title: "Nike Blazer",
-      //     category: "shoe",
-      //     price: "1799.95",
-      //     img: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/8bd81405-bbe2-4516-aecb-665e22981785/blazer-low-77-jumbo-shoes-gRBtmC.png",
-      //   },
-      //   {
-      //     title: "Nike Metcon",
-      //     category: "shoe",
-      //     price: "2399.95",
-      //     img: "https://static.nike.com/a/images/c_limit,w_318,f_auto/t_product_v1/751775da-9cbe-4a20-bfaf-b400fec7c464/metcon-7-flyease-training-shoes-rvxbdG.png",
-      //   },
-      //   {
-      //     title: "Nike Air Zoom",
-      //     category: "shoe",
-      //     price: "2499.95",
-      //     img: "https://static.nike.com/a/images/c_limit,w_318,f_auto/t_product_v1/b72aa81e-f334-43d2-8e40-3ad10d382e7f/air-zoom-pegasus-38-road-running-shoes-S0nz9k.png",
-      //   },
-      //   {
-      //     title: "Nike Waffle",
-      //     category: "shoe",
-      //     price: "1899.95",
-      //     img: "https://static.nike.com/a/images/c_limit,w_318,f_auto/t_product_v1/321cee9a-d0ea-437a-a900-cc3b57a5541e/waffle-one-se-shoe-S8B0Hn.png",
-      //   },
-      //   {
-      //     title: "Air Jordan",
-      //     category: "shoe",
-      //     price: "3499.95",
-      //     img: "https://static.nike.com/a/images/c_limit,w_318,f_auto/t_product_v1/c0442a34-0b88-46db-b12c-8865b028dc1f/air-jordan-xxxvi-first-light-basketball-shoes-0CKrQR.png",
-      //   },
-      // ],
+      user:null,
     };
   },
   methods: {
-    deleteProduct(products, index) {
-      let confirmation = confirm(
-        "Are you sure you want to delete the selected product?"
-      );
-
-      if (confirmation) {
-        products.splice(products, index);
-        localStorage.setItem("products", JSON.stringify(products));
-      }
+   async deleteProduct(products, res,req) {
+      try {
+    await products.findByIdAndDelete(req.params.id);
+    res.send(200).json("Product has been deleted...");
+  } catch (err) {
+    res.status(500).json(err);
+  }
     },
     createProduct(products) {
       let title = document.querySelector("#addTitle").value;
@@ -428,6 +393,17 @@ export default {
       .then((response) => response.json())
       .then((json) => {
         this.product = json;
+      });
+
+      fetch("https://ecom-store-arden.herokuapp.com/user", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        this.user = json;
       });
       
   },

@@ -4,36 +4,7 @@
   <!-- Grid container -->
   <div class="container p-4">
     <!-- Section: Social media -->
-    <section class="mb-4">
-      <!-- Facebook -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="bi bi-facebook" style="font-size: 29px"></i></a>
-
-      <!-- Twitter -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-twitter"></i
-      ></a>
-
-      <!-- Google -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-google"></i
-      ></a>
-
-      <!-- Instagram -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-instagram"></i
-      ></a>
-
-      <!-- Linkedin -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-linkedin-in"></i
-      ></a>
-
-      <!-- Github -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-github"></i
-      ></a>
-    </section>
+  
     <!-- Section: Social media -->
 
     <!-- Section: Form -->
@@ -92,25 +63,13 @@
               <a href="/Cart" class="text-white m-2"> Cart</a>
             </li>
             <li>
-              <a href="#!" class="text-white m-2">Male Fashion</a>
+              <a href="/ProductList" class="text-white m-2">Male Fashion</a>
             </li>
             <li>
-              <a href="#!" class="text-white m-2">Female Fashion</a>
+              <a href="/ProductList" class="text-white m-2">Female Fashion</a>
             </li>
             <li>
               <a href="/ProductList" class="text-white m-2">Product List</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white m-2">My Account</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white m-2">Order Tracking</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white m-2">Wishlist</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white m-2">Terms</a>
             </li>
           </ul>
         </div>
@@ -125,10 +84,10 @@
               <h6 class="text-white m-2 ">62 fiaryland Rd, Suite 89563</h6>
             </li>
             <li>
-              <a href="#!" class="text-white m-2"> +01 234 567 8910</a>
+              <p class="text-white m-2"> +01 234 567 8910</p>
             </li>
             <li>
-              <a href="#!" class="text-white m-2">contact@arden.dev</a>
+              <p  class="text-white m-2">contact@arden.dev</p>
             </li>
           </ul>
         </div>
