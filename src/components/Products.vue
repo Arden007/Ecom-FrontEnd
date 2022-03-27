@@ -31,7 +31,7 @@
             >
               <i class="fas fa-cart-plus"></i>
             </button>
-            <button
+            <!-- <button
               v-if="product.cart"
               :disabled="product.cart"
               type="button"
@@ -39,7 +39,7 @@
               href="#"
             >
               Added
-            </button>
+            </button> -->
           </div>
            <p class="card-text">R{{ products.price }}</p>
         </div>

@@ -300,11 +300,11 @@ export default {
       product: null,
       user: null,
       isAdmin: "",
-      addTitle: "",
-      addCategory: "",
-      description: "",
-      addImg: "",
-      addPrice: "",
+      // addTitle: "",
+      // addCategory: "",
+      // description: "",
+      // addImg: "",
+      // addPrice: "",
     };
   },
   methods: {
@@ -334,15 +334,14 @@ export default {
       fetch("https://ecom-store-arden.herokuapp.com/product", {
         method: "POST",
         body: JSON.stringify({
-          addTitle: this.title,
-          addCategory: this.categories,
-          description: this.desc,
+          title: this.title,
+          category: this.categories,
+          desc: this.desc,
           price: this.price,
-          image: this.img,
+          img: this.img,
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
-          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
       })
         .then((response) => response.json())
@@ -404,7 +403,7 @@ export default {
       });
 
     // if (this.isAdmin == false) {
-    //   alert("You are Not ADMIN");
+    //   alert("You are Not Admin");
     //   this.$router.push({ name: "Home" });
     // }
   },
