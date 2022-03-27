@@ -51,30 +51,7 @@
     <section class="fBottom">
       <!--Grid row-->
       <div class="col-auto">
-        <!--Grid column-->
-        <div class="col-auto">
-          <h5 class="text-uppercase">Useful Links</h5>
-
-          <ul class="list-unstyled mb-0 d-flex  pl-1">
-            <li>
-              <a href="/" class="text-white m-2">Home </a>
-            </li>
-            <li>
-              <a href="/Cart" class="text-white m-2"> Cart</a>
-            </li>
-            <li>
-              <a href="/ProductList" class="text-white m-2">Male Fashion</a>
-            </li>
-            <li>
-              <a href="/ProductList" class="text-white m-2">Female Fashion</a>
-            </li>
-            <li>
-              <a href="/ProductList" class="text-white m-2">Product List</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-
+      
         <!--Grid column-->
         <div class="col-auto mt-4">
           <h5 class="text-uppercase">Contact</h5>

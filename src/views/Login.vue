@@ -46,7 +46,7 @@ export default {
   },
 
 methods: {
-      login() {
+        login() {
       fetch("https://ecom-store-arden.herokuapp.com/auth/login", {
         method: "PATCH",
         body: JSON.stringify({
@@ -58,13 +58,15 @@ methods: {
         },
       })
         .then((response) => response.json())
-        .then((response) => console.log(response))
+        .then((json) => console.log(json))
         .then((json) => {
           if (json.jwt) {
             localStorage.setItem("jwt", json.jwt);
-            console.log(json.jwt);
           }
-         else {
+          if (localStorage.getItem("jwt")) {
+            location.reload();
+            
+          } else {
             alert("Incorrect Credentials");
           }
         })

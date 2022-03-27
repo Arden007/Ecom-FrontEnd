@@ -31,7 +31,6 @@
       <div class="carousel-text">
         <h5 class="title">Summer Sale</h5>
         <p class="desc">Don't compromise on style get 30% off new arrivals.</p>
-       <a href="/ProductList" class="btn btn-primary">Shop Now</a>
       </div>
     </div>
 
@@ -41,7 +40,6 @@
       <div class="carousel-text ">
         <h5 class="title">Winter Sale</h5>
         <p class="desc">Don't compromise on style get 30% off new arrivals.</p>
-        <a href="/ProductList" class="btn btn-primary">Shop Now</a>
       </div>
     </div>
 
@@ -51,7 +49,6 @@
       <div class="carousel-text  d-md-block">
         <h5 class="title">Popular Sale</h5>
         <p class="desc">Don't compromise on style get 30% off new arrivals.</p>
-        <a href="/ProductList" class="btn btn-primary">Shop Now</a>
       </div>
     </div>
   </div>
