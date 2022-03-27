@@ -301,7 +301,7 @@ export default {
   },
   methods: {
    deleteProduct(id) {
-      if (confirm("Do you really want to delete this product? If Yes Reload to view changes")) {
+      if (confirm("Do you really want to delete this product? If Yes Reload to view changes after json alert")) {
         fetch("https://ecom-store-arden.herokuapp.com/product/" + id, {
           method: "DELETE",
           headers: {
