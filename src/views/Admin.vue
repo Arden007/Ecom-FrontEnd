@@ -296,7 +296,7 @@ export default {
     return {
       product:null,
       user:null,
-      isAdmin:null,
+      isAdmin:"",
     };
   },
   methods: {
@@ -378,14 +378,11 @@ export default {
                 alert(err);
               });
           
-          if (this.isAdmin === false) {
-            alert("You are Not ADMIN");
-            this.$router.push({ name: "Home" });
-          }
-          else {
-      alert("Please Login");
-      this.$router.push({ name: "Login" });
-    }
+          // if (this.isAdmin == false) {
+          //   alert("You are Not ADMIN");
+          //   this.$router.push({ name: "Home" });
+          // }
+        
    }
 };
 </script>
