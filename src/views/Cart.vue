@@ -47,8 +47,8 @@ export default {
   components: { Navbar, Anouncement,Footer },
   data:()=> {
     return {
-      cart:null,
-     products: [
+   cart:null,
+     carts: [
             {
               title: "Nike Blazer",
               category: "shoe",

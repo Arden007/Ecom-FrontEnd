@@ -1,6 +1,7 @@
 <template>
+<div>
   <table class="table align-middle mb-0 bg-white">
-    <div v-for="products in product" :key="products.id">
+    <div v-for="products in product" :key="products">
       <thead class="bg-light">
         <tr>
           <th>Image</th>
@@ -194,8 +195,8 @@
                       name="addCategory"
                       id="addCategory"
                     >
-                      <option value="Shoes">Shoes</option>
-                      <option value="Clothing">Clothing</option>
+                      <option value="Shoes">Male</option>
+                      <option value="Clothing">Female</option>
                     </select>
                   </div>
                   <div class="mb-3">
@@ -244,13 +245,15 @@
     </div>
   </table>
 
-  <table v-for="users in user" :key="users.id" class="table align-middle mb-0 bg-white">
+<div>
+  <table v-for="users in user " :key="users" class="table align-middle mb-0 bg-white">
     <thead class="bg-light">
       <tr>
         <th> User Name</th>
         <th>Email</th>
-        <th>Password</th>
         <th>Admin</th>
+        <th>Cart</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -265,61 +268,26 @@
             />
             <div class="ms-3">
               <p class="fw-bold mb-1">{{users.username}}</p> 
-              <p class="text-muted mb-0">{{users.email}}</p>
             </div>
           </div>
         </td>
         <td>
-          <p class="fw-normal mb-1">Software engineer</p>
-          <p class="text-muted mb-0">IT department</p>
+              <p class="text-muted mb-0">{{users.email}}</p>
         </td>
         <td>
-          <span class="badge badge-success rounded-pill d-inline">Active</span>
+          <p class="fw-normal mb-1">{{users.isAdmin}}</p>
         </td>
-        <td>Senior</td>
+        <td>{{users.cart}}</td>
         <td>
           <button type="button" class="btn btn-link btn-sm btn-rounded">
             Edit
           </button>
         </td>
       </tr>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img
-              src="https://mdbootstrap.com/img/new/avatars/6.jpg"
-              class="rounded-circle"
-              alt=""
-              style="width: 45px; height: 45px"
-            />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">Alex Ray</p>
-              <p class="text-muted mb-0">alex.ray@gmail.com</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">Consultant</p>
-          <p class="text-muted mb-0">Finance</p>
-        </td>
-        <td>
-          <span class="badge badge-primary rounded-pill d-inline"
-            >Onboarding</span
-          >
-        </td>
-        <td>Junior</td>
-        <td>
-          <button
-            type="button"
-            class="btn btn-link btn-rounded btn-sm fw-bold"
-            data-mdb-ripple-color="dark"
-          >
-            Edit
-          </button>
-        </td>
-      </tr>
     </tbody>
   </table>
+  </div>
+  </div>
 </template>
 
 <script>
@@ -328,6 +296,7 @@ export default {
     return {
       product:null,
       user:null,
+      isAdmin:null,
     };
   },
   methods: {
@@ -396,17 +365,24 @@ export default {
       });
 
       fetch("https://ecom-store-arden.herokuapp.com/user", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        this.user = json;
-      });
-      
-  },
+              method: "GET",
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            })
+              .then((response) => response.json())
+              .then((json) => {
+                this.user = json;
+              })
+              .catch((err) => {
+                alert(err);
+              });
+          
+          if (this.isAdmin == false) {
+            alert("You are Not ADMIN");
+            this.$router.push({ name: "Home" });
+          }
+   }
 };
 </script>
 

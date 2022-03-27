@@ -46,9 +46,8 @@ export default {
   },
 
 methods: {
- async login() {
-try{
- fetch("https://ecom-store-arden.herokuapp.com/auth/login", {
+    login() {
+      fetch("https://ecom-store-arden.herokuapp.com/auth/login", {
         method: "PATCH",
         body: JSON.stringify({
           username: this.username,
@@ -59,40 +58,22 @@ try{
         },
       })
         .then((response) => response.json())
-        .then((response) => console.log(response))
-        .then((user) => {
-          if(user.accessToken){
-               localStorage.setItem("accessToken", user.accessToken);
-               localStorage.setItem("id", user._id);
-               localStorage.setItem("name", user.username);
-               localStorage.setItem("email", user.email);
-                localStorage.setItem("contact", user.isAdmin);
-               localStorage.setItem("subject", user.cart);
-               console.log(user.jwt);
+        .then((json) => {
+          if (json.jwt) {
+            localStorage.setItem("jwt", json.jwt);
           }
-      
-          if(localStorage.getItem("accessToken")){
-            this.$router.push({ name: "Admin" });
-                      this.user.isAdmin = true
-          }
-           if(localStorage.getItem("accessToken")){
-            this.$router.push({ name: "Home" });
-                      this.user.isAdmin = false
-          }
-          else{
-             this.$router.push({ name: "Login" });
-            alert("Incorrect Details");
+          if (localStorage.getItem("jwt")) {
+            location.reload();
+            
+          } else {
+            alert("Incorrect Credentials");
           }
         })
-}
-     
-        catch(err)  {
-           this.$router.push({ name: "Login" });
-        
+        .catch((err) => {
           alert(err);
-        }
-    }
-  }
+        });
+    },
+  },
 };
 
 
