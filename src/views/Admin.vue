@@ -51,7 +51,7 @@
             <button
               type="button"
               class="btn btn-danger ms-2"
-              @click="deleteProduct(products, (products.id = true))"
+              @click="deleteProduct(products._id)"
             >
               Delete
             </button>
@@ -300,13 +300,24 @@ export default {
     };
   },
   methods: {
-   async deleteProduct(products, res,req) {
-      try {
-    await products.findByIdAndDelete(req.params.id);
-    res.send(200).json("Product has been deleted...");
-  } catch (err) {
-    res.status(500).json(err);
-  }
+   deleteProduct(id) {
+      if (confirm("Do you really want to delete this product?")) {
+        fetch("https://ecom-store-arden.herokuapp.com/product/" + id, {
+          method: "DELETE",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        })
+          .then((response) => response.json())          
+          .then(() => {
+            alert("DELETED PRODUCT");
+            location.reload();
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      }
+    
     },
     createProduct(products) {
       let title = document.querySelector("#addTitle").value;
