@@ -378,10 +378,14 @@ export default {
                 alert(err);
               });
           
-          if (this.isAdmin == false) {
+          if (this.isAdmin === false) {
             alert("You are Not ADMIN");
             this.$router.push({ name: "Home" });
           }
+          else {
+      alert("Please Login");
+      this.$router.push({ name: "Login" });
+    }
    }
 };
 </script>

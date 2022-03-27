@@ -36,7 +36,7 @@
             <a class="nav-link" href="/Login" v-if="auth === true">SIGN IN</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Login" v-if="auth === false">SIGN Out</a>
+            <a class="nav-link" href="/Login" v-if="auth === false"  @click="logout">SIGN Out</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/Cart"> <i class="bi bi-cart"></i></a>
@@ -72,7 +72,7 @@
               <a class="dropdown-item" href="#">Settings</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Logout</a>
+              <a class="dropdown-item" href="#"  @click="logout">Logout</a>
             </li>
           </ul>
         </div>
@@ -88,8 +88,24 @@
 export default {
   data() {
     return {
-      auth: true,
+      auth: false,
     };
+  },
+  methods: {
+    logout() {
+            if (!localStorage.getItem("jwt")) {
+        alert("No User To log Out");
+         this.$router.push({ name: "Home" });
+      }
+      else{
+      localStorage.clear();
+      this.loggedin = false
+      alert("user logged out");
+      this.$router.push({ name: "Home" });
+      location.reload()
+      }
+
+    },
   },
 };
 </script>
