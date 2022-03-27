@@ -26,23 +26,7 @@
       </div>
       <!-- Collapsible wrapper -->
 
-      <!-- Right elements -->
       <div class="d-flex align-items-center">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="/Register">REGISTER</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Login" v-if="auth === true">SIGN IN</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Login" v-if="auth === false"  @click="logout">SIGN Out</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Cart"> <i class="bi bi-cart"></i></a>
-          </li>
-        </ul>
-
         <!-- Avatar -->
         <div class="dropdown">
           <a
