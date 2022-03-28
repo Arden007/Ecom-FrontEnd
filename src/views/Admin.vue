@@ -190,17 +190,15 @@
                       />
                     </div>
                     <div class="mb-3">
-                      <label for="" class="form-label">Category</label>
-                      <select
-                        class="form-select"
-                        name="addCategory"
-                        id="addCategory"
+                      <label for="addPrice" class="form-label">Category</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="addPrice"
+                        id="addPrice"
                         v-model="categories"
-                      >
-                        <option value="Shoes">Male</option>
-                        <option value="Clothing">Female</option>
-                      </select>
-                    </div>
+                      />
+                    </div> 
                     <div class="mb-3">
                       <label for="addPrice" class="form-label">Price</label>
                       <input
@@ -210,7 +208,8 @@
                         id="addPrice"
                         v-model="price"
                       />
-                    </div> <div class="mb-3">
+                    </div> 
+                    <div class="mb-3">
                       <label for="addPrice" class="form-label">Description</label>
                       <input
                         class="form-control"
@@ -363,7 +362,7 @@ export default {
         .then((response) => console.log(response))
         .then(() => {
           alert("Product Created");
-          // return this.$router.push({ name: "ProductList" });
+          return this.$router.push({ name: "ProductList" });
         });
     },
 
