@@ -222,6 +222,7 @@
                     <div class="mb-3">
                       <label for="addPrice" class="form-label">Price</label>
                       <input
+                      placeholder="eg.2000"
                         class="form-control"
                         type="text"
                         name="addPrice"
