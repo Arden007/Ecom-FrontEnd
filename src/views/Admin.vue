@@ -186,6 +186,7 @@
                         type="text"
                         name="addTitle"
                         id="addTitle"
+                        v-model="title"
                       />
                     </div>
                     <div class="mb-3">
@@ -194,6 +195,7 @@
                         class="form-select"
                         name="addCategory"
                         id="addCategory"
+                        v-model="categories"
                       >
                         <option value="Shoes">Male</option>
                         <option value="Clothing">Female</option>
@@ -206,6 +208,16 @@
                         type="text"
                         name="addPrice"
                         id="addPrice"
+                        v-model="price"
+                      />
+                    </div> <div class="mb-3">
+                      <label for="addPrice" class="form-label">Description</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="addDes"
+                        id="addDes"
+                        v-model="desc"
                       />
                     </div>
                     <div class="mb-3">
@@ -215,6 +227,7 @@
                         type="text"
                         name="addImg"
                         id="addImg"
+                        v-model="img"
                       />
                     </div>
                   </div>
@@ -300,11 +313,12 @@ export default {
       product: null,
       user: null,
       isAdmin: "",
-      // addTitle: "",
-      // addCategory: "",
-      // description: "",
-      // addImg: "",
-      // addPrice: "",
+      title: "",
+      categories: "",
+      price: "",
+      desc: "",
+      img: "",
+    
     };
   },
   methods: {
@@ -331,6 +345,7 @@ export default {
       }
     },
     createProduct() {
+      // console.log(this.title, this.categories, this.desc, this.price, this.img, this.desc)
       fetch("https://ecom-store-arden.herokuapp.com/product", {
         method: "POST",
         body: JSON.stringify({
