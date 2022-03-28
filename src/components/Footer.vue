@@ -9,7 +9,7 @@
 
     <!-- Section: Form -->
     <section class="">
-      <form action="">
+      <form action="https://formspree.io/f/mgedlarn">
         <!--Grid row-->
         <div class="row d-flex justify-content-center pb-2">
           <!--Grid column-->

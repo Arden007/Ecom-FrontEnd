@@ -19,8 +19,7 @@
               id="addToCart${position}"
             />
             <button
-              v-if="!product.cart"
-              :disabled="product.cart"
+              
               type="button"
               class="btn btn-dark ms-3"
               @click="
