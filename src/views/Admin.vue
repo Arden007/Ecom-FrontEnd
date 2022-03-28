@@ -96,21 +96,21 @@
                         type="text"
                         name="editTitle"
                         id="editTitle"
-                        :value="products.title"
+                        v-model="title"
                       />
                     </div>
                     <div class="mb-3">
                       <label for="editCategory" class="form-label"
                         >Category</label
                       >
-                      <select
-                        class="form-select"
+                      <input
+                        class="form-control"
+                        type="text"
                         name="editCategory"
                         id="editCategory"
-                      >
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                      </select>
+                        v-model="categories"
+                      />
+                        
                     </div>
                     <div class="mb-3">
                       <label for="editPrice" class="form-label">Price</label>
@@ -119,7 +119,7 @@
                         type="text"
                         name="editPrice"
                         id="editPrice"
-                        :value="product.price"
+                        v-model="price"
                       />
                     </div>
                     <div class="mb-3">
@@ -129,7 +129,7 @@
                         type="text"
                         name="editImg"
                         id="editImg"
-                        :value="product.img"
+                        v-model="img"
                       />
                     </div>
                   </div>
@@ -146,7 +146,7 @@
                       type="button"
                       class="btn btn-primary"
                       data-bs-dismiss="modal"
-                      @click="updateProduct(products, (index = true))"
+                      @click="editProduct(products._id)"
                     >
                       Save changes
                     </button>
@@ -317,7 +317,6 @@ export default {
       price: "",
       desc: "",
       img: "",
-    
     };
   },
   methods: {
@@ -366,25 +365,29 @@ export default {
         });
     },
 
-    updateProduct(products, index) {
-      let title = document.querySelector("#editTitle").value;
-      let category = document.querySelector("#editCategory").value;
-      let price = document.querySelector("#editPrice").value;
-      let img = document.querySelector("#editImg").value;
-
-      try {
-        if (!title || !price || !img)
-          throw new Error("Please fill in all fields");
-        products[index] = {
-          title,
-          category,
-          price,
-          img,
-        };
-        localStorage.setItem("products", JSON.stringify(products));
-      } catch (err) {
-        alert(err);
-      }
+     editProduct(id) {
+       console.log(this.title, this.categories, this.desc, this.price, this.img, this.desc,)
+        fetch("https://ecom-store-arden.herokuapp.com/product/" + id, {
+          method: "PUT",
+          body: JSON.stringify({
+            title: this.title,
+            category: this.categories,
+            description: this.desc,
+            price: this.price,
+            img: this.img,
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            // Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
+        })
+          .then((response) => response.json())
+          .then((response) => console.log(response))
+          .then(() => {
+            alert("Product Updated");
+            return this.$router.push({ name: "ProductList" });
+          });
+      
     },
   },
 
