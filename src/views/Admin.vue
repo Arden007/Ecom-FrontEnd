@@ -365,13 +365,14 @@ export default {
     deleteProduct(id) {
       if (
         confirm(
-          "Do you really want to delete this product? If Yes Reload to view changes after json alert"
+          "Do you really want to delete this product? If Yes go to ProductList view changes after json alert"
         )
       ) {
         fetch("https://ecom-store-arden.herokuapp.com/product/" + id, {
           method: "DELETE",
           headers: {
-            "Content-type": "application/json; charset=UTF-8",
+            "Accept": "application/json",
+            "Content-Type": "application/json"
           },
         })
           .then((response) => response.json())
