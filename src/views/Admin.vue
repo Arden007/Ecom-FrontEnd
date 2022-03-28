@@ -122,6 +122,26 @@
                         v-model="price"
                       />
                     </div>
+                     <div class="mb-3">
+                      <label for="editImg" class="form-label">Color</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="editImg"
+                        id="editImg"
+                        v-model="color"
+                      />
+                    </div> 
+                    <div class="mb-3">
+                      <label for="editImg" class="form-label">Size</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="editImg"
+                        id="editImg"
+                        v-model="size"
+                      />
+                    </div>
                     <div class="mb-3">
                       <label for="editImg" class="form-label">Image URL</label>
                       <input
@@ -217,6 +237,26 @@
                         name="addDes"
                         id="addDes"
                         v-model="desc"
+                      />
+                    </div>
+                      <div class="mb-3">               
+                      <label for="editImg" class="form-label">Color</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="editImg"
+                        id="editImg"
+                        v-model="color"
+                      />
+                    </div> 
+                    <div class="mb-3">
+                      <label for="editImg" class="form-label">Size</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="editImg"
+                        id="editImg"
+                        v-model="size"
                       />
                     </div>
                     <div class="mb-3">
@@ -317,6 +357,8 @@ export default {
       price: "",
       desc: "",
       img: "",
+      color: "",
+      size: "",
     };
   },
   methods: {
@@ -352,6 +394,8 @@ export default {
           desc: this.desc,
           price: this.price,
           img: this.img,
+          color:this.color,
+          size: this.size,
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -375,6 +419,8 @@ export default {
             description: this.desc,
             price: this.price,
             img: this.img,
+            color:this.color,
+            size: this.size,
           }),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
